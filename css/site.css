@@ -1,20 +1,25 @@
 :root{
-    --primary-color: rgba(145, 14, 138, 0.774);
-    --secondary-color: rgb(255, 168, 97);
-    --dark-color: rgba(71, 0, 88, 0.678);
-    --white-color: #e7f7f7;
+    --primary-color: rgba(0, 121, 235, 0.781);
+    --secondary-color: rgba(238, 234, 3, 0.884);
+    --dark-color: rgba(2, 28, 75, 0.678);
+    --white-color: #f3f3d0;
+
 }
 
 body{
     color: var(--dark-color);
+    font-family: Righteous;
 }
 
 nav{
     background-color: var(--dark-color);
+    font-family: satisfy;
+    font-size: 1.3rem;
 }
 
 footer{
     background-color: var(--dark-color);
+    font-family: satisfy;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -36,7 +41,7 @@ footer .social>a:hover{
 }
 
 .bsicon{
-    color: purple;
+    color: rgb(15, 208, 214);
 }
 
 .jsicon{
@@ -44,11 +49,11 @@ footer .social>a:hover{
 }
 
 .html5icon{
-    color: orangered;
+    color: rgba(36, 11, 177, 0.37);
 }
 
 .css3icon{
-    color: rgb(11,82,214);
+    color: rgb(223, 208, 3);
 }
 
 .checklist >li i{
@@ -66,6 +71,28 @@ main>.container {
     padding: 60px 15px 0;
 }
 
+.Fizz{
+    color:rgb(144, 199, 250);
+}
+
+.Buzz{
+    color:rgb(2, 18, 236);
+}
+
+.FizzBuzz{
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.myBtn{
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.myBtn:hover{
+    background-color: var(--white-color);
+    color: black;
+}
 
 .sticky-nav {
     position: fixed;
