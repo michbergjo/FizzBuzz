@@ -58,17 +58,153 @@
         <div class="row row-cols-1 row-cols-lg-2">
             <div class="col-lg-8">
                 <pre class="line-numbers"><code class="language-javascript">
-                        // Call Hello World 
-                        function HelloWorld(){
-                         alert("hello world");
+                    //controller function
+                    //get the values from the page 
+                    
+                    function getValues() {
+                        //get values from the page
+                        let buzzValue = document.getElementById("buzzValue").value;
+                        let fizzValue = document.getElementById("fizzValue").value;
+                    
+                        //parse into integers
+                        buzzValue = parseInt(buzzValue);
+                        fizzValue = parseInt(fizzValue);
+                    
+                        //check that inputs are integers
+                        if(Number.isInteger(buzzValue) && Number.isInteger(fizzValue)) {
+                    
+                            //fizzbuzz the values 
+                            let values = fizzBuzz(fizzValue, buzzValue);
+                    
+                            //display the values 
+                            displayValues(values);
+                    
+                        } else {
+                            alert("You must enter integers");
                         }
+                    }
+                    
+                    //produce the numbers, replacing with fizz, buzz, and fizzbuzz when needed
+                    //fizzBuzz solution 1
+                    function fizzBuzz(fizzValue, buzzValue) {
+                        let values = [];
+                    
+                        for(let i = 1; i <= 100; i++){
+                             if((i % fizzValue == 0) && (i % buzzValue == 0)) {
+                                values.push("FizzBuzz");
+                            } else if(i % fizzValue == 0) {
+                                values.push("Fizz")
+                            } else if(i % buzzValue == 0) {
+                                values.push("Buzz")
+                            } else {
+                                values.push(i);
+                            }
+                        }
+                        return values;
+                    }
+
+                    //fizzBuzz solution 2
+                    function fizzBuzzB(fizzValue, buzzValue) {
+                        let returnArray = [];
+                        let Fizz = false;
+                        let Buzz = false;
+                    
+                        for (let i = 1; i <= 100; i++) {
+                           
+                            Fizz = i % fizzValue == 0;
+                            Buzz = i % buzzValue == 0; 
+                    
+                            switch(true) {
+                                case Fizz && Buzz: {
+                                    returnArray.push("FizzBuzz");
+                                    break;
+                                }
+                                case Fizz: {
+                                    returnArray.push("Fizz");
+                                    break;
+                                }
+                                case Buzz: {
+                                    returnArray.push("Buzz");
+                                    break;
+                                }
+                                default: {
+                                    returnArray.push(i);
+                                    break;
+                                }
+                            }
+                        }
+                        return returnArray;
+                    }
+                    
+                    //fizzBuzz solution 3
+                    function fizzBuzzC(fizzValue, buzzValue){
+                        let returnArray = [];
+                    
+                        for(let i = 1; i <=100; i++){
+                    
+                            let value = ((i % fizzValue == 0 ? "Fizz" : "") + (i % buzzValue == 0 ? "Buzz" : "") || i);
+                            returnArray.push(value);
+                        }
+                        return returnArray;
+                    }
+                    
+                    //display the values from fizzbuzz
+                    function displayValues(values) {
+                    
+                    
+                        //get the table body element from the page
+                        let tableBody = document.getElementById("results");
+                    
+                        //get the template row
+                        let templateRow = document.getElementById("fbTemplate");
+                    
+                        //add all the rows to the table 
+                        tableBody.innerHTML = "";
+                    
+                        for (let index = 0; index < values.length; index += 5) {
+                            
+                            let tableRow = document.importNode(templateRow.content, true);
+                    
+                            //grab the tds and put them in the array
+                            let rowCols = tableRow.querySelectorAll("td");
+                            rowCols[0].classList.add(values[index]);
+                            rowCols[0].textContent = values[index];
+                    
+                            rowCols[1].classList.add(values[index+1]);
+                            rowCols[1].textContent = values[index+1];
+                    
+                            rowCols[2].classList.add(values[index+2]);
+                            rowCols[2].textContent = values[index+2];
+                    
+                            rowCols[3].classList.add(values[index+3]);
+                            rowCols[3].textContent = values[index+3];
+                    
+                            rowCols[4].classList.add(values[index+4]);
+                            rowCols[4].textContent = values[index+4];
+                            
+                            tableBody.appendChild(tableRow);
+                            
+                        }
+                    }
                     </code>
                 </pre>
             </div>
             <div class="col-lg-4">
-                <p>The Code is structured in one function.</p>
-                <h5>Hello World</h5>
-                <p>Hello World is a function that displays an alert with a message of 'Hello World'</p>
+                <p>The Code is structured in three functions.</p>
+                <h4>Fizz Buzz</h4>
+                <h6>A twist on the traditional coding challenge</h6>
+                <p>This Fizz Buzz Application is broken into three functions.  The getValues function is the controller function. 
+                    It retrieves the values for Fizz and Buzz from the page, checks that they are integers, calls the fizzBuzz function, 
+                    and calls the displayValues function.
+                </p>
+                <p>The fizzBuzz function is the logic function. It uses logic to determine if values should be replaced with FizzBuzz, Buzz, or Fizz in an array.  If not, it 
+                    adds the value itself to the array.  The function returns an array with all the correct Fizz, Buzz, FizzBuzz, and numerical values in it. This documentation
+                    provides three possible logic solutions for the fizzBuzz problem.  
+                </p>
+                <p>The displayValues function is the display function. It takes the fizzBuzz array as an argument and places it into the template provided in 
+                    the HTML.  In this case, the template consists of 5 columns (td's) for each row.  Thus, it adds 5 values to each row via the for loop.  It also 
+                    watches for the class of each value, to change the color of the Fizz, Buzz, and FizzBuzz values. 
+                </p>
             </div>
         </div>
     </div>
